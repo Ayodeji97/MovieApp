@@ -1,4 +1,4 @@
-package com.engie.eea_tech_interview.koin
+package com.engie.eea_tech_interview.di.koin.datasource.remotesource
 
 import com.engie.eea_tech_interview.network.createOkHttpClient
 import com.engie.eea_tech_interview.network.createMoshiConverter

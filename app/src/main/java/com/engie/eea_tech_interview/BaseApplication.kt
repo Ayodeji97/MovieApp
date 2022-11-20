@@ -1,7 +1,8 @@
 package com.engie.eea_tech_interview
 
 import androidx.multidex.MultiDexApplication
-import com.engie.eea_tech_interview.koin.networkModule
+import com.engie.eea_tech_interview.di.koin.datasource.remotesource.networkModule
+import com.engie.eea_tech_interview.di.koin.parentModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -13,7 +14,8 @@ open class BaseApplication: MultiDexApplication() {
 
         startKoin {
             androidContext(this@BaseApplication)
-            modules(getDependencyModules())
+           // modules(getDependencyModules())
+            modules(parentModule)
         }
     }
 
