@@ -1,10 +1,10 @@
-package com.engie.eea_tech_interview.model
+package com.engie.eea_tech_interview.business.datasource.remote.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Movie(
+data class MovieDto(
     @Json(name = "id") val id: Int,
     @Json(name = "poster_path") val posterPath: String?,
     @Json(name = "overview") val overview: String?,
