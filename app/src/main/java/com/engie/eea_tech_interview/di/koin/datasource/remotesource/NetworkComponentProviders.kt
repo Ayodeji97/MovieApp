@@ -1,4 +1,4 @@
-package com.engie.eea_tech_interview.network
+package com.engie.eea_tech_interview.di.koin.datasource.remotesource
 
 import android.content.Context
 import com.engie.eea_tech_interview.MovieApiService

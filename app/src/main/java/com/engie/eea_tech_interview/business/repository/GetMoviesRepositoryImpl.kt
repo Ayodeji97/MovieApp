@@ -2,9 +2,8 @@ package com.engie.eea_tech_interview.business.repository
 
 import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSource
 import com.engie.eea_tech_interview.business.domain.model.Movie
-import com.engie.eea_tech_interview.business.domain.model.SearchResult
 import com.engie.eea_tech_interview.business.utils.Result
-import com.engie.eea_tech_interview.business.utils.mapper.base.remotemapper.MovieDtoMapper
+import com.engie.eea_tech_interview.business.utils.mapper.remotemapper.MovieDtoMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

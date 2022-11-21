@@ -12,19 +12,19 @@ data class MovieEntity(
     @ColumnInfo(name = "movieId")
     val id: Int,
     @ColumnInfo(name = "posterPath")
-    val posterPath: String?,
+    val posterPath: String,
     @ColumnInfo(name = "overview")
-    val overview: String?,
+    val overview: String,
     @ColumnInfo(name = "releaseDate")
-    val releaseDate: String?,
+    val releaseDate: String,
     @ColumnInfo(name = "originalTitle")
-    val originalTitle: String?,
+    val originalTitle: String,
     @ColumnInfo(name = "mediaType")
-    val mediaType: String?,
+    val mediaType: String,
     @ColumnInfo(name = "originalLanguage")
-    val originalLanguage: String?,
+    val originalLanguage: String,
     @ColumnInfo(name = "title")
-    val title: String?,
+    val title: String,
     @ColumnInfo(name = "voteCount")
-    val voteCount: Int?,
+    val voteCount: Int,
 )
