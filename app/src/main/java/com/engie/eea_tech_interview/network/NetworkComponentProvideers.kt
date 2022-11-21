@@ -1,6 +1,7 @@
 package com.engie.eea_tech_interview.network
 
 import android.content.Context
+import com.engie.eea_tech_interview.MovieApiService
 import com.squareup.moshi.Moshi
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -40,3 +41,6 @@ fun createOkHttpClient(context: Context): OkHttpClient {
 
 fun createMoshiConverter(): Converter.Factory =
     MoshiConverterFactory.create(Moshi.Builder().build())
+
+fun createMovieApiService(retrofit: Retrofit) : MovieApiService =
+    retrofit.create(MovieApiService::class.java)

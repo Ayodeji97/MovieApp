@@ -13,7 +13,7 @@ import java.io.IOException
 
 class GetMoviesRemoteSourceImpl(
     private val movieApiService: MovieApiService,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val ioDispatcher: CoroutineDispatcher
 ) : GetMoviesRemoteSource {
     override suspend fun getMovies(searchQuery: String): Result<SearchResultDto> =
         withContext(ioDispatcher) {
