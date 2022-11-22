@@ -1,6 +1,5 @@
 package com.engie.eea_tech_interview.business.datasource.remote
 
-import com.engie.eea_tech_interview.MovieApiService
 import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSource
 import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSourceImpl
 import com.engie.eea_tech_interview.business.util.MainCoroutineRule

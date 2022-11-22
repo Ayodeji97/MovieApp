@@ -1,7 +1,7 @@
 package com.engie.eea_tech_interview.di.daggerhilt
 
 import androidx.viewbinding.BuildConfig
-import com.engie.eea_tech_interview.MovieApiService
+import com.engie.eea_tech_interview.business.datasource.remote.MovieApiService
 import com.engie.eea_tech_interview.business.utils.Constants.BASE_URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

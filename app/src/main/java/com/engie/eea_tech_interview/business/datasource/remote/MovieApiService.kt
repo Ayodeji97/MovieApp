@@ -1,4 +1,4 @@
-package com.engie.eea_tech_interview
+package com.engie.eea_tech_interview.business.datasource.remote
 
 import com.engie.eea_tech_interview.business.datasource.remote.model.GenreResultDto
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto

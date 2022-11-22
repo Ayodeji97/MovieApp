@@ -1,7 +1,8 @@
-package com.engie.eea_tech_interview
+package com.engie.eea_tech_interview.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.engie.eea_tech_interview.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -1,7 +1,7 @@
 package com.engie.eea_tech_interview.di.koin.datasource.remotesource
 
 import android.content.Context
-import com.engie.eea_tech_interview.MovieApiService
+import com.engie.eea_tech_interview.business.datasource.remote.MovieApiService
 import com.squareup.moshi.Moshi
 import okhttp3.Cache
 import okhttp3.OkHttpClient

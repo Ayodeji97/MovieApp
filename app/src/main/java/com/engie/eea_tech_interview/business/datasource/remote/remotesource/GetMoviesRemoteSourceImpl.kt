@@ -1,6 +1,6 @@
 package com.engie.eea_tech_interview.business.datasource.remote.remotesource
 
-import com.engie.eea_tech_interview.MovieApiService
+import com.engie.eea_tech_interview.business.datasource.remote.MovieApiService
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
 import com.engie.eea_tech_interview.business.utils.Constants.MOVIE_API_KEY
 import com.engie.eea_tech_interview.business.utils.Result
