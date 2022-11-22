@@ -13,7 +13,7 @@ class MainViewHolder(
     fun bind(movie: Movie) {
         ui.apply {
             movieTitleTv.text = movie.title
-            movieAvartarIv.loadImage(movie.posterPath)
+            movieAvatarIv.loadImage(movie.posterPath)
         }
     }
 
