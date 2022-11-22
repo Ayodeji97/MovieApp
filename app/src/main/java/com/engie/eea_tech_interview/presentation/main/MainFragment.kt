@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.engie.eea_tech_interview.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.android.ext.android.inject
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var currentBinding : FragmentMainBinding? = null
     private val ui get() = currentBinding!!
 
-    private val mainViewModel : MainViewModel by inject()
+    private val mainViewModel : MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +34,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel.onTriggeredEvent(MainViewEvent.GetSearchResult("u"))
+        mainViewModel.onTriggeredEvent(MainViewEvent.GetSearchResult("james bond"))
 
         getSearchResultSubscriber ()
     }
@@ -43,7 +46,11 @@ class MainFragment : Fragment() {
                 if (state.error != "") {
                     Toast.makeText(requireContext(), "${state.error}", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(requireContext(), "Herree: ${state.searchResult?.results}", Toast.LENGTH_SHORT).show()
+                    state.searchResult?.let {movies->
+                        ui.check.text = movies.toString()
+                        Toast.makeText(requireContext(), "Herree: ${movies}", Toast.LENGTH_SHORT).show()
+                    }
+
                 }
             }
         }

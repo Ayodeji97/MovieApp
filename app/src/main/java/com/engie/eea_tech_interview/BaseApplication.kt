@@ -13,27 +13,27 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 
-open class BaseApplication: MultiDexApplication() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        startKoin {
-            androidContext(this@BaseApplication)
-           modules(getDependencyModules())
-            //modules(parentModule)
-        }
-    }
-
-    open fun getDependencyModules(): List<Module> {
-        return listOf(
-            networkModule,
-            cacheSourceModule,
-            remoteSourceModule,
-            mapperModule,
-            repositoryModule,
-            useCaseModule,
-            viewModelModule
-        )
-    }
-}
+//open class BaseApplication: MultiDexApplication() {
+//
+//    override fun onCreate() {
+//        super.onCreate()
+//
+//        startKoin {
+//            androidContext(this@BaseApplication)
+//           modules(getDependencyModules())
+//            //modules(parentModule)
+//        }
+//    }
+//
+//    open fun getDependencyModules(): List<Module> {
+//        return listOf(
+//            networkModule,
+//            cacheSourceModule,
+//            remoteSourceModule,
+//            repositoryModule,
+//            mapperModule,
+//            useCaseModule,
+//            viewModelModule
+//        )
+//    }
+//}

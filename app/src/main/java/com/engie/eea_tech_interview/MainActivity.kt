@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
 import com.engie.eea_tech_interview.business.utils.Constants.MOVIE_API_KEY
 import com.engie.eea_tech_interview.presentation.main.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.koin.android.ext.android.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     //private val retrofit: Retrofit by inject()
