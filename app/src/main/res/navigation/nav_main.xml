@@ -10,5 +10,20 @@
         android:name="com.engie.eea_tech_interview.presentation.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main"
-        />
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.engie.eea_tech_interview.presentation.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail"
+        >
+        <argument
+            android:name="movie"
+            app:argType="com.engie.eea_tech_interview.business.domain.model.Movie"
+            app:nullable="true" />
+    </fragment>
 </navigation>

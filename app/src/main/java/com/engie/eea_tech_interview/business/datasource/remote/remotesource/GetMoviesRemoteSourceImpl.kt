@@ -1,5 +1,6 @@
 package com.engie.eea_tech_interview.business.datasource.remote.remotesource
 
+import android.util.Log
 import com.danzucker.currency.di.dispatcher.IoDispatcher
 import com.engie.eea_tech_interview.MovieApiService
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
@@ -29,7 +30,7 @@ class GetMoviesRemoteSourceImpl @Inject constructor(
                     val errorMessageObject = apiResponse.errorBody()?.string()
                     apiResponse.errorBody()?.close()
                     val errorMessage = errorMessageObject?.let {
-                        JSONObject(it).getString("message")
+                        JSONObject(it).getString("errors")
                     }
                     Result.Error(errorMessage ?: "Something went wrong")
                 }

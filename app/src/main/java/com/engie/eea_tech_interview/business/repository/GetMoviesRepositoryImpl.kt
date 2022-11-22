@@ -1,6 +1,8 @@
 package com.engie.eea_tech_interview.business.repository
 
+import android.util.Log
 import com.engie.eea_tech_interview.business.datasource.cache.cachesource.GetMoviesCacheSource
+import com.engie.eea_tech_interview.business.datasource.cache.model.MovieEntity
 import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSource
 import com.engie.eea_tech_interview.business.domain.model.Movie
 import com.engie.eea_tech_interview.business.utils.Result
@@ -23,7 +25,9 @@ class GetMoviesRepositoryImpl @Inject constructor(
                 is Result.Success -> {
                     response.data?.let {
                         val movies = movieDtoMapper.transformToEntity(it.results)
-                        getMoviesCacheSource.saveMovies(movies)
+                        if (movies.isNotEmpty()){
+                            getMoviesCacheSource.saveMovies(movies)
+                        }
                         emit(
                             Result.Success(
                                 movieCacheMapper.transformToDomain(movies)
@@ -37,11 +41,15 @@ class GetMoviesRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun getMoviesFromDb(): List<Movie> {
-        var movies: List<Movie> = listOf()
-        getMoviesCacheSource.getMovies().collectLatest {
-            movies = movieCacheMapper.transformToDomain(it)
-        }
-        return movies
-    }
+    //    override suspend fun getMoviesFromDb(): Flow<List<Movie>> {
+//        var movies: List<Movie> = listOf()
+//        getMoviesCacheSource.getMovies().collect {
+//            movies = movieCacheMapper.transformToDomain(it)
+//        }
+//        return movies
+//    }
+    override suspend fun getMoviesFromDb(): Flow<List<MovieEntity>> =
+        getMoviesCacheSource.getMovies()
+
+
 }

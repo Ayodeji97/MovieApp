@@ -1,7 +1,9 @@
 package com.engie.eea_tech_interview.business.domain.model
 
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Movie(
     val id : Int,
     val posterPath: String,
@@ -12,4 +14,4 @@ data class Movie(
     val originalLanguage: String,
     val title: String,
     val voteCount: Int,
-)
+) : Parcelable

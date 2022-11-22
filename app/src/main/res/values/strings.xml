@@ -2,4 +2,7 @@
     <string name="app_name">EEA Tech Interview</string>
     <string name="welcome">Welcome to the EEA Code Challenge</string>
     <string name="search_str">Search</string>
+    <string name="search_not_found">Search Not Found!</string>
+    <string name="overview_str">Overview</string>
+    <string name="back_str">Back</string>
 </resources>

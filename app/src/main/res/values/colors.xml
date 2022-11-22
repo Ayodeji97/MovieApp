@@ -10,4 +10,6 @@
     <color name="divider_color">#DDE2ED</color>
     <color name="card_view_bg_color">#EBEFF8</color>
     <color name="background_entire">#FFF4F6FB</color>
+    <color name="management_background_bg">#E1EFFF</color>
+    <color name="border_stroke_color">#DBDBDB</color>
 </resources>
