@@ -2,6 +2,9 @@ package com.engie.eea_tech_interview.business.util
 
 import com.engie.eea_tech_interview.business.datasource.cache.model.MovieEntity
 import com.engie.eea_tech_interview.business.datasource.remote.model.MovieDto
+import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
+import com.engie.eea_tech_interview.business.domain.model.Movie
+import com.engie.eea_tech_interview.business.domain.model.SearchResult
 import com.squareup.moshi.Json
 
 object DummyData {
@@ -58,6 +61,27 @@ object DummyData {
         mediaType = "audio",
         originalLanguage = "important",
         title = "Elon",
+        voteCount = 3,
+    )
+
+
+    val searchResultDto = SearchResultDto(
+        results = listOf(movieDto)
+    )
+
+    val searchResultEmptyDto = SearchResultDto(
+        results = listOf()
+    )
+
+    val movie = Movie(
+        id = 2,
+        posterPath = "www.sdfv.jpeg",
+        overview = "This is a small overview for testing",
+        releaseDate = "2022-12-45",
+        originalTitle = "James",
+        mediaType = "audio",
+        originalLanguage = "important",
+        title = "James",
         voteCount = 3,
     )
 

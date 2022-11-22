@@ -1,58 +1,96 @@
 package com.engie.eea_tech_interview.business.datasource.remote
 
-import android.content.Context
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import com.engie.eea_tech_interview.business.datasource.cache.MovieDatabase
-import com.engie.eea_tech_interview.business.datasource.cache.dao.MovieDao
-import com.engie.eea_tech_interview.business.util.DummyData
+import com.engie.eea_tech_interview.MovieApiService
+import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSource
+import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSourceImpl
+import com.engie.eea_tech_interview.business.util.MainCoroutineRule
+import com.engie.eea_tech_interview.business.util.TestConstants.API_KEY_TEST
+import com.engie.eea_tech_interview.business.util.TestConstants.MOVIE_JSON
+import com.engie.eea_tech_interview.business.util.TestConstants.OVERVIEW
+import com.engie.eea_tech_interview.business.util.TestConstants.TITLE
+import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.flow.first
+import com.google.gson.GsonBuilder
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import okhttp3.HttpUrl
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.MockWebServer
+import okio.buffer
+import okio.source
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE)
+
 class GetMovieRemoteSourceTest {
 
-    private lateinit var movieDatabase: MovieDatabase
-    private val context: Context = ApplicationProvider.getApplicationContext()
-    private lateinit var movieDao: MovieDao
+    private lateinit var mockWebServer: MockWebServer
+    private lateinit var baseUrl: HttpUrl
+    private lateinit var movieApiService: MovieApiService
+    private lateinit var getMoviesRemoteSource: GetMoviesRemoteSource
+
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
+
 
     @Before
-    fun initDb() {
-        movieDatabase = Room.inMemoryDatabaseBuilder(
-            context,
-            MovieDatabase::class.java
-        ).allowMainThreadQueries().build()
+    fun setup() {
+        mockWebServer = MockWebServer()
+        mockWebServer.start()
+        baseUrl = mockWebServer.url("/")
+        movieApiService = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .build()
+            .create(MovieApiService::class.java)
 
-        movieDao = movieDatabase.movieDao()
+        getMoviesRemoteSource = GetMoviesRemoteSourceImpl(movieApiService, Dispatchers.Main)
     }
 
-    @Test
-    fun `is searchResult is saved in db`() = runBlocking {
-        movieDao.insert(listOf(DummyData.movieEntity))
-        val savedMovies = movieDao.getMovies()
-        assertThat(savedMovies).isNotNull()
-    }
 
-    @Test
-    fun `is searchResult data correctly saved in db`() = runBlocking {
-        movieDao.insert(listOf(DummyData.movieEntity))
-        val savedMovies = movieDao.getMovies()
-        assertThat(savedMovies).isNotNull()
-        assertThat(savedMovies.first().first().id).isEqualTo(DummyData.movieEntity.id)
-        assertThat(savedMovies.first().first().title).isEqualTo(DummyData.movieEntity.title)
-        assertThat(savedMovies.first().first().overview).isEqualTo(DummyData.movieEntity.overview)
+    private fun enqueueMockResponse(fileName: String) {
+        javaClass.classLoader?.let {
+            val inputStream = it.getResourceAsStream(fileName)
+            val source = inputStream.source().buffer()
+            val mockResponse = MockResponse()
+            mockResponse.setBody(source.readString(Charsets.UTF_8))
+            mockWebServer.enqueue(mockResponse)
+        }
     }
 
     @After
-    fun tearDb() {
-        movieDatabase.close()
+    fun tearDown() {
+        mockWebServer.shutdown()
     }
+
+    @Test
+    fun `check that get searchResult method is successful`() = runBlocking {
+        enqueueMockResponse(MOVIE_JSON)
+        val responseSuccessful: Boolean = movieApiService.getMovies(API_KEY_TEST, "James").isSuccessful
+        Truth.assertThat(responseSuccessful).isTrue()
+    }
+
+    @Test
+    fun `check that get searchResult method does not return null`() = runBlocking {
+        enqueueMockResponse(MOVIE_JSON)
+        val response = movieApiService.getMovies(API_KEY_TEST, "James").body()
+        assertThat(response).isNotNull()
+    }
+
+    @Test
+    fun `check that get searchResult method return at least a corresponding correct data`() =
+        runBlocking {
+            enqueueMockResponse(MOVIE_JSON)
+            val response = movieApiService.getMovies(API_KEY_TEST, "James").body()
+            assertThat(response).isNotNull()
+            assertThat(response?.results?.first()?.title).isEqualTo(TITLE)
+            assertThat(response?.results?.first()?.overview).isEqualTo(OVERVIEW)
+        }
+
 }
