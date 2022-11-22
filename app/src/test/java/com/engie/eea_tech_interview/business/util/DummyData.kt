@@ -1,0 +1,65 @@
+package com.engie.eea_tech_interview.business.util
+
+import com.engie.eea_tech_interview.business.datasource.cache.model.MovieEntity
+import com.engie.eea_tech_interview.business.datasource.remote.model.MovieDto
+import com.squareup.moshi.Json
+
+object DummyData {
+
+    val error_text = "Exception thrown"
+    val exception = Exception(error_text)
+
+    val movieDto = MovieDto(
+        id = 2,
+        posterPath = "www.sdfv.jpeg",
+        overview = "This is a small overview for testing",
+        releaseDate = "2022-12-45",
+        originalTitle = "James",
+        genreIds = listOf(),
+        mediaType = "audio",
+        originalLanguage = "important",
+        title = "James",
+        voteCount = 3,
+        hasVideo = false,
+    )
+
+    val movieDto2 = MovieDto(
+        id = 10,
+        posterPath = "www.sdfv.jpeg",
+        overview = "This is a second small overview for testing",
+        releaseDate = "2022-12-45",
+        originalTitle = "James",
+        genreIds = listOf(),
+        mediaType = "audio",
+        originalLanguage = "important",
+        title = "Elon",
+        voteCount = 3,
+        hasVideo = true,
+    )
+
+    val movieEntity = MovieEntity(
+        id = 2,
+        posterPath = "www.sdfv.jpeg",
+        overview = "This is a small overview for testing",
+        releaseDate = "2022-12-45",
+        originalTitle = "James",
+        mediaType = "audio",
+        originalLanguage = "important",
+        title = "James",
+        voteCount = 3,
+    )
+
+    val movieEntity2 = MovieEntity(
+        id = 10,
+        posterPath = "www.sdfv.jpeg",
+        overview = "This is a second small overview for testing",
+        releaseDate = "2022-12-45",
+        originalTitle = "James",
+        mediaType = "audio",
+        originalLanguage = "important",
+        title = "Elon",
+        voteCount = 3,
+    )
+
+
+}
