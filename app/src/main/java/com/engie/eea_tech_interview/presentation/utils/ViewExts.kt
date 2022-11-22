@@ -1,10 +1,7 @@
 package com.engie.eea_tech_interview.presentation.utils
 
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -20,8 +17,6 @@ fun ImageView.loadImage(url: String, placeHolder: Int = R.drawable.vikings) {
         .into(this)
 }
 
-
-
 inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit) {
     this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
         var timer: CountDownTimer? = null
@@ -34,7 +29,7 @@ inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit)
             timer = object : CountDownTimer(1000, 200) {
                 override fun onTick(millisUntilFinished: Long) {}
                 override fun onFinish() {
-                    if (!newText.isNullOrEmpty()){
+                    if (!newText.isNullOrEmpty()) {
                         listener(newText.orEmpty())
                     }
                 }

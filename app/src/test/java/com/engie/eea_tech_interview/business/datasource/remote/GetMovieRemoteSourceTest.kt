@@ -26,7 +26,6 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class GetMovieRemoteSourceTest {
 
     private lateinit var mockWebServer: MockWebServer
@@ -37,7 +36,6 @@ class GetMovieRemoteSourceTest {
     @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
-
 
     @Before
     fun setup() {
@@ -52,7 +50,6 @@ class GetMovieRemoteSourceTest {
 
         getMoviesRemoteSource = GetMoviesRemoteSourceImpl(movieApiService, Dispatchers.Main)
     }
-
 
     private fun enqueueMockResponse(fileName: String) {
         javaClass.classLoader?.let {
@@ -72,7 +69,8 @@ class GetMovieRemoteSourceTest {
     @Test
     fun `check that get searchResult method is successful`() = runBlocking {
         enqueueMockResponse(MOVIE_JSON)
-        val responseSuccessful: Boolean = movieApiService.getMovies(API_KEY_TEST, "James").isSuccessful
+        val responseSuccessful: Boolean =
+            movieApiService.getMovies(API_KEY_TEST, "James").isSuccessful
         Truth.assertThat(responseSuccessful).isTrue()
     }
 
@@ -92,5 +90,4 @@ class GetMovieRemoteSourceTest {
             assertThat(response?.results?.first()?.title).isEqualTo(TITLE)
             assertThat(response?.results?.first()?.overview).isEqualTo(OVERVIEW)
         }
-
 }

@@ -7,7 +7,6 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class GetMovieRepositoryModule {
@@ -16,5 +15,4 @@ abstract class GetMovieRepositoryModule {
     abstract fun provideMovieRepository(
         getMoviesRepositoryImpl: GetMoviesRepositoryImpl
     ): GetMoviesRepository
-
 }

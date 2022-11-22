@@ -17,14 +17,14 @@ import org.koin.core.module.Module
  * and corresponding module are no longer in use for now!.
  */
 
-open class BaseApplication: MultiDexApplication() {
+open class BaseApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
             androidContext(this@BaseApplication)
-           modules(getDependencyModules())
+            modules(getDependencyModules())
         }
     }
 

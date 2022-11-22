@@ -1,6 +1,5 @@
 package com.engie.eea_tech_interview.presentation.main
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.engie.eea_tech_interview.business.domain.usecase.GetMoviesFromDbUseCase
@@ -37,7 +36,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
     private fun getSearchResult(searchQuery: String) {
         viewModelScope.launch {
             _getSearchResultViewState.value.let { state ->
@@ -57,7 +55,6 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
 
     private fun getSearchResultFromDb() {
         viewModelScope.launch {

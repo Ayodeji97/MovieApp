@@ -2,7 +2,6 @@ package com.engie.eea_tech_interview.business.repository
 
 import com.engie.eea_tech_interview.business.datasource.cache.cachesource.GetMoviesCacheSource
 import com.engie.eea_tech_interview.business.datasource.remote.remotesource.GetMoviesRemoteSource
-import com.engie.eea_tech_interview.business.domain.model.Movie
 import com.engie.eea_tech_interview.business.util.DummyData
 import com.engie.eea_tech_interview.business.util.TestConstants.SEARCH_QUERY
 import com.engie.eea_tech_interview.business.utils.Result
@@ -74,7 +73,6 @@ class GetMoviesRepositoryTest {
             }
         }
 
-
     @Test
     fun `check that calling get search result return the correct data`() = runBlocking {
         Mockito.`when`(getMoviesRemoteSource.getMovies(SEARCH_QUERY)).thenReturn(
@@ -94,6 +92,4 @@ class GetMoviesRepositoryTest {
             else -> {}
         }
     }
-
-
 }

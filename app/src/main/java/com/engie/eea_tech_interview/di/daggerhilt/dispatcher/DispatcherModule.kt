@@ -1,4 +1,4 @@
-package com.danzucker.currency.di.dispatcher
+package com.engie.eea_tech_interview.di.daggerhilt.dispatcher
 
 import dagger.Module
 import dagger.Provides

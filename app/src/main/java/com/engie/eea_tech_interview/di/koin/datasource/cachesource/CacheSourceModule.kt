@@ -6,6 +6,5 @@ import org.koin.dsl.module
 val cacheSourceModule = module(createdAtStart = true) {
 
     single { provideMovieDatabase(androidApplication()) }
-
     single { provideMovieDao(get()) }
 }

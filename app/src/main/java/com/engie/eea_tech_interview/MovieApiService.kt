@@ -2,7 +2,6 @@ package com.engie.eea_tech_interview
 
 import com.engie.eea_tech_interview.business.datasource.remote.model.GenreResultDto
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

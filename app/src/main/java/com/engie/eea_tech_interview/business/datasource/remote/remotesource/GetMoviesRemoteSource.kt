@@ -4,5 +4,5 @@ import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResul
 import com.engie.eea_tech_interview.business.utils.Result
 
 interface GetMoviesRemoteSource {
-    suspend fun getMovies(searchQuery : String): Result<SearchResultDto>
+    suspend fun getMovies(searchQuery: String): Result<SearchResultDto>
 }

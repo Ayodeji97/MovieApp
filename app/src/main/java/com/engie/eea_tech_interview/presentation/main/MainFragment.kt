@@ -1,9 +1,7 @@
 package com.engie.eea_tech_interview.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -13,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.engie.eea_tech_interview.R
 import com.engie.eea_tech_interview.databinding.FragmentMainBinding
@@ -24,7 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -42,7 +38,7 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //return super.onCreateView(inflater, container, savedInstanceState)
+        // return super.onCreateView(inflater, container, savedInstanceState)
         currentBinding = FragmentMainBinding.inflate(inflater)
         return ui.root
     }
@@ -56,7 +52,6 @@ class MainFragment : Fragment() {
         menuHost = requireActivity()
         initMenu()
     }
-
 
     private fun getSearchResultSubscriber() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -101,27 +96,29 @@ class MainFragment : Fragment() {
     }
 
     private fun initMenu() {
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_fragment_movie, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.action_search -> {
-                        // Action here
-                        val searchView = menuItem.actionView as SearchView
-                        searchView.onQueryTextChanged { searchQuery ->
-                            mainViewModel.onTriggeredEvent(MainViewEvent.GetSearchResult(searchQuery))
-                        }
-                        scrollUp()
-                        true
-                    }
-                    else -> false
+        menuHost.addMenuProvider(
+            object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.menu_fragment_movie, menu)
                 }
-            }
 
-        }, viewLifecycleOwner, Lifecycle.State.STARTED)
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    return when (menuItem.itemId) {
+                        R.id.action_search -> {
+                            // Action here
+                            val searchView = menuItem.actionView as SearchView
+                            searchView.onQueryTextChanged { searchQuery ->
+                                mainViewModel.onTriggeredEvent(MainViewEvent.GetSearchResult(searchQuery))
+                            }
+                            scrollUp()
+                            true
+                        }
+                        else -> false
+                    }
+                }
+            },
+            viewLifecycleOwner, Lifecycle.State.STARTED
+        )
     }
 
     private fun scrollUp() {

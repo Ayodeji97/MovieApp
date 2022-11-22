@@ -4,7 +4,7 @@ import com.engie.eea_tech_interview.business.domain.usecase.GetMoviesFromDbUseCa
 import com.engie.eea_tech_interview.business.domain.usecase.GetMoviesUseCase
 import org.koin.dsl.module
 
-val useCaseModule = module{
+val useCaseModule = module {
     single { GetMoviesUseCase(get()) }
     single { GetMoviesFromDbUseCase(get()) }
 }

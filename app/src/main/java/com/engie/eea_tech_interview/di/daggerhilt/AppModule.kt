@@ -20,7 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-
     @Singleton
     @Provides
     fun provideGsonBuilder(): Gson {
@@ -57,7 +56,6 @@ object AppModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
     }
-
 
     @Singleton
     @Provides

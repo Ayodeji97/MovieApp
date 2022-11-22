@@ -15,5 +15,4 @@ abstract class RemoteSourceModule {
     abstract fun provideMovieRemoteSource(
         getMoviesRemoteSourceImpl: GetMoviesRemoteSourceImpl
     ): GetMoviesRemoteSource
-
 }

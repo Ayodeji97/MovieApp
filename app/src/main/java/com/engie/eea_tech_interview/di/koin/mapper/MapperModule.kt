@@ -5,11 +5,10 @@ import com.engie.eea_tech_interview.business.datasource.remote.model.MovieDto
 import com.engie.eea_tech_interview.business.utils.mapper.base.BaseDtoMapper
 import com.engie.eea_tech_interview.business.utils.mapper.cachemapper.MovieCacheMapper
 import com.engie.eea_tech_interview.business.utils.mapper.remotemapper.MovieDtoMapper
-import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val mapperModule = module {
-    single<BaseDtoMapper<List<MovieDto>,List<MovieEntity>>> {
+    single<BaseDtoMapper<List<MovieDto>, List<MovieEntity>>> {
         MovieDtoMapper()
     }
 

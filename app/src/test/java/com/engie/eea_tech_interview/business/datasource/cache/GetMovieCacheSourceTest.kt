@@ -15,7 +15,6 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
 class GetMovieCacheSourceTest {
@@ -48,7 +47,8 @@ class GetMovieCacheSourceTest {
         Truth.assertThat(savedMovies).isNotNull()
         Truth.assertThat(savedMovies.first().first().id).isEqualTo(DummyData.movieEntity.id)
         Truth.assertThat(savedMovies.first().first().title).isEqualTo(DummyData.movieEntity.title)
-        Truth.assertThat(savedMovies.first().first().overview).isEqualTo(DummyData.movieEntity.overview)
+        Truth.assertThat(savedMovies.first().first().overview)
+            .isEqualTo(DummyData.movieEntity.overview)
     }
 
     @After

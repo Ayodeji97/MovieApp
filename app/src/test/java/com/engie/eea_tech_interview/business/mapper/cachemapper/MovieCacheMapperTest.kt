@@ -19,7 +19,7 @@ class MovieCacheMapperTest {
     }
 
     @Test
-    fun `map local data against domain data returns data are correctly mapped` () = runTest {
+    fun `map local data against domain data returns data are correctly mapped`() = runTest {
         val movieEntity = DummyData.movieEntity
         val mappedData = movieCacheMapper.transformToDomain(listOf(movieEntity))
         assertThat(mappedData.first().id).isEqualTo(movieEntity.id)
@@ -27,9 +27,8 @@ class MovieCacheMapperTest {
         assertThat(mappedData.first().overview).isEqualTo(movieEntity.overview)
     }
 
-
     @Test
-    fun `map local data against domain data returns data are incorrectly mapped` () = runTest {
+    fun `map local data against domain data returns data are incorrectly mapped`() = runTest {
         val movieEntity = DummyData.movieEntity
         val mappedData = movieCacheMapper.transformToDomain(listOf(movieEntity))
         assertThat(DummyData.movieEntity2.id).isNotEqualTo(mappedData.first().id)

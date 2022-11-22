@@ -13,15 +13,13 @@ import com.engie.eea_tech_interview.business.utils.mapper.cachemapper.MovieCache
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 import org.robolectric.annotation.Config
 
@@ -38,7 +36,6 @@ class MainViewModelTest {
     private lateinit var mainViewModel: MainViewModel
 
     private lateinit var movieCacheMapper: MovieCacheMapper
-
 
     /**
      * This rules all related arch component background Job in the same thread
@@ -73,7 +70,6 @@ class MainViewModelTest {
         ).isEqualTo(MainViewState().copy(isLoading = false, searchResult = listOf(DummyData.movie)))
     }
 
-
     @Test
     fun `check that call to useCase return empty list when search query is not found`() =
         runBlocking {
@@ -106,5 +102,4 @@ class MainViewModelTest {
                 )
             )
         }
-
 }

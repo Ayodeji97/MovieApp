@@ -1,7 +1,6 @@
 package com.engie.eea_tech_interview.business.mapper.remotemapper
 
 import com.engie.eea_tech_interview.business.util.DummyData
-import com.engie.eea_tech_interview.business.utils.mapper.base.BaseDtoMapper
 import com.engie.eea_tech_interview.business.utils.mapper.remotemapper.MovieDtoMapper
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,7 +19,7 @@ class MovieRemoteMapperTest {
     }
 
     @Test
-    fun `map remote data against local data returns data are correctly mapped` () = runTest {
+    fun `map remote data against local data returns data are correctly mapped`() = runTest {
         val movieDto = DummyData.movieDto
         val mapEntity = movieDtoMapper.transformToEntity(listOf(movieDto))
         assertThat(mapEntity.first().title).isEqualTo(movieDto.title)
@@ -29,7 +28,7 @@ class MovieRemoteMapperTest {
     }
 
     @Test
-    fun `map remote data against local data returns data are invalidly mapped` () = runTest {
+    fun `map remote data against local data returns data are invalidly mapped`() = runTest {
         val movieDto = DummyData.movieDto
         val mapEntity = movieDtoMapper.transformToEntity(listOf(movieDto))
         assertThat(DummyData.movieDto2.id).isNotEqualTo(mapEntity.first().id)

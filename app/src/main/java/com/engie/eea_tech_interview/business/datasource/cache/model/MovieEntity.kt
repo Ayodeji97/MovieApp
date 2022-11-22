@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.engie.eea_tech_interview.business.utils.Constants.MOVIE_TABLE
 
-
 @Entity(tableName = MOVIE_TABLE)
 data class MovieEntity(
     @PrimaryKey

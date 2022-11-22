@@ -1,6 +1,5 @@
 package com.engie.eea_tech_interview.business.utils.mapper.remotemapper
 
-
 import com.engie.eea_tech_interview.business.datasource.cache.model.MovieEntity
 import com.engie.eea_tech_interview.business.datasource.remote.model.MovieDto
 import com.engie.eea_tech_interview.business.utils.mapper.base.BaseDtoMapper
@@ -21,5 +20,4 @@ class MovieDtoMapper @Inject constructor() : BaseDtoMapper<List<MovieDto>, List<
                 voteCount = movieDto.voteCount ?: 0
             )
         }
-
 }

@@ -1,13 +1,11 @@
 package com.engie.eea_tech_interview.business.datasource.remote.remotesource
 
-import android.util.Log
-import com.danzucker.currency.di.dispatcher.IoDispatcher
 import com.engie.eea_tech_interview.MovieApiService
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
 import com.engie.eea_tech_interview.business.utils.Constants.MOVIE_API_KEY
 import com.engie.eea_tech_interview.business.utils.Result
+import com.engie.eea_tech_interview.di.daggerhilt.dispatcher.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.HttpException

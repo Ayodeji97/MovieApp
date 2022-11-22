@@ -4,8 +4,6 @@ import com.engie.eea_tech_interview.business.datasource.cache.model.MovieEntity
 import com.engie.eea_tech_interview.business.datasource.remote.model.MovieDto
 import com.engie.eea_tech_interview.business.datasource.remote.model.SearchResultDto
 import com.engie.eea_tech_interview.business.domain.model.Movie
-import com.engie.eea_tech_interview.business.domain.model.SearchResult
-import com.squareup.moshi.Json
 
 object DummyData {
 
@@ -64,7 +62,6 @@ object DummyData {
         voteCount = 3,
     )
 
-
     val searchResultDto = SearchResultDto(
         results = listOf(movieDto)
     )
@@ -84,6 +81,4 @@ object DummyData {
         title = "James",
         voteCount = 3,
     )
-
-
 }

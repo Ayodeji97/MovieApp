@@ -14,17 +14,17 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-    private var currentBinding : FragmentDetailBinding? = null
+    private var currentBinding: FragmentDetailBinding? = null
     private val ui get() = currentBinding!!
 
-    private var movie : Movie? = null
+    private var movie: Movie? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       // return super.onCreateView(inflater, container, savedInstanceState)
+        // return super.onCreateView(inflater, container, savedInstanceState)
         currentBinding = FragmentDetailBinding.inflate(inflater)
         return ui.root
     }
